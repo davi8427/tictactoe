@@ -12,6 +12,36 @@ def showboard():
 # list for tracking choices
 used = []
 
+# to check if someone has won
+def scorechecker():
+    # Winning sequence on row1
+    if row1[0] == 'O' and row1[1] == 'O' and row1[2] == 'O':
+        print '%s 1 wins!' % (p1)
+    if row1[0] == 'X'and row1[1] == 'X' and row1[2] == 'X':
+        print '%s wins!' % (p2)
+    # winning sequence row2
+    if row2[0] == 'O' and row2[1] == 'O' and row2[2] == 'O':
+        print '%s 1 wins!' % (p1)
+    if row2[0] == 'X'and row2[1] == 'X' and row2[2] == 'X':
+        print '%s wins!' % (p2)
+    # winning sequence row3
+    if row3[0] == 'O' and row3[1] == 'O' and row3[2] == 'O':
+        print '%s 1 wins!' % (p1)
+    if row3[0] == 'X'and row3[1] == 'X' and row3[2] == 'X':
+        print '%s wins!' % (p2)
+    # winning sequence diag 1
+    if row1[0] == 'O' and row2[1] == 'O' and row3[2] == 'O':
+        print '%s 1 wins!' % (p1)
+    if row1[0] == 'X'and row2[1] == 'X' and row3[2] == 'X':
+        print '%s wins!' % (p2)
+    # winning sequence daig 2
+    if row3[0] == 'O' and row2[1] == 'O' and row1[2] == 'O':
+        print '%s 1 wins!' % (p1)
+    if row3[0] == 'X'and row2[1] == 'X' and row1[2] == 'X':
+        print '%s wins!' % (p2)
+    else:
+        pass
+
 # for player 1's placements
 def scorekeeperp1(user_input):
     if user_input == 1:
@@ -56,10 +86,10 @@ def scorekeeperp2(user_input):
 
 # Player 1's space chekcer 
 def p1turn(user_input):
-    if user_input in used:
+    while user_input in used:
         print 'Sorry, please choose another space. This one has already been taken.'
-        pass
-    elif user_input not in used:
+        user_input = input()
+    if user_input not in used:
         used.append(user_input)
         scorekeeperp1(user_input)
         showboard()
